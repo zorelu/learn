@@ -10,7 +10,7 @@ b = str(504)
 name="a.pntryy.com"
 os.environ['name']=str(name)
 print name
-get = os.popen('curl -sS  -I -o /dev/null -s -w %{http_code} $name')
+get = os.popen('curl -o /dev/null -s -w "%{http_code}\n " "$name"')
 time = os.popen('date +%Y-%m-%d-%H:%M:%S')
 time1 = os.popen('date +%s')
 date1 = str(time1.read())
