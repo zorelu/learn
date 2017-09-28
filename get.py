@@ -10,6 +10,7 @@ b = str(504)
 name="a.pntryy.com"
 os.environ['name']=str(name)
 print name
+###curl 不加双引号会报错
 get = os.popen('curl -o /dev/null -s -w "%{http_code}\n " "$name"')
 time = os.popen('date +%Y-%m-%d-%H:%M:%S')
 time1 = os.popen('date +%s')
