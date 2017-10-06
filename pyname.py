@@ -3,7 +3,7 @@ import os,sys
 import json
 import commands
 
-
+###判读是否等于200修改
 #a = open("/var/named/demo.com",'a')
 #a.write("b          IN      A       127.0.0.1")
 #a.close( )
