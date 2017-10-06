@@ -4,7 +4,7 @@ import json
 import commands
 import psycopg2
 
-
+###处理读取postsql数据
 ###get date and crul status
 b = str(504)
 name="a.pntryy.com"
