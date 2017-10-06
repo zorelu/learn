@@ -22,3 +22,10 @@ r = requests.get(url)
 with open(b+'/web/'+a+ ".ico", "w+") as code:
          code.write(r.content)
 ###获取ico图片并写入文件夹
+fp = open("net.txt",'a')
+#data_string=json.dumps(a)
+#fp.write (data_string)
+fp.write (a)
+fp.write('\n')
+fp.close( )
+###写入网址
