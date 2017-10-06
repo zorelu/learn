@@ -25,7 +25,7 @@ with open(b+'/web/'+a+ ".ico", "w+") as code:
 fp = open("net.txt",'a')
 #data_string=json.dumps(a)
 #fp.write (data_string)
-fp.write (a)
+fp.write ("{url:"+a="}")
 fp.write('\n')
 fp.close( )
 ###写入网址
