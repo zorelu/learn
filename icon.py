@@ -19,7 +19,7 @@ url = 'http://{0}/favicon.ico'.format(a)
 #print url
 #print b
 r = requests.get(url) 
-with open(b+'/web/'+a+ ".ico", "w+") as code:
+with open(b+'/web/'+a+ ".ico", "wb+") as code:
          code.write(r.content)
 ###获取ico图片并写入文件夹
 fp = open("net.txt",'a')
