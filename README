@@ -1,8 +1,11 @@
- 这个是我的第一个项目
- 控制用python修改dns 
- 可以类似智能切换DNS
+这个是我的第一个项目
+控制用python修改dns 
+可以类似智能切换DNS
 监控网站健康度并输入到数据库 
-get.py
+see.py
 
 获取网站的icon 爬虫
 icon.py
+
+使用钉钉机器人接口
+dingding.py
