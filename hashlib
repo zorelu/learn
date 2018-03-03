@@ -1,0 +1,15 @@
+import hashlib
+
+####hash 使用
+
+
+def md5(arg):#这是加密函数，将传进来的函数加密
+    md5_pwd = hashlib.md5(bytes('abd',encoding='utf-8'))
+    md5_pwd.update(bytes(arg,encoding='utf-8'))
+    return md5_pwd.hexdigest()
+b= md5('zorelu')
+c = input()
+if md5(c) == b :
+    print ("ok")
+else :
+    print("not ok ")
