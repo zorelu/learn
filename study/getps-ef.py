@@ -10,11 +10,11 @@ ml="ps aux | sed -n 5,15p "
 a= os.popen(ml).read().split("\n")
 ##获取长度
 
-
-###递归所有,除去第一行（第一行包括其他不需要参数）
-##for c  in range(1,len(a)):
 #循环10次
 for c  in range(10):
+###递归所有,除去第一行（第一行包括其他不需要参数）
+##for c  in range(1,len(a)):
+
 	#print (c)
     ###格式第二行
 	b=a[c].split()
