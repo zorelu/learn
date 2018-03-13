@@ -4,6 +4,13 @@ from sqlcon import md5,cur
 
 app = Flask(__name__)
 
+@app.route('/test')
+def test():
+    if 'username' in session:
+        return 'Logged in as %s' % escape(session['username'])
+    return 'You are not logged in'
+
+
 
 # post方法
 @app.route("/login", methods=['post'])
@@ -17,22 +24,26 @@ def login():
     pw = request.form['passwd']
     cur.execute("select *  from user1  where username= '{0}'".format(name))
     rows = cur.fetchall()
-    for row in rows:
 
-        # print (row[0])
+    #print (rows)
         # #print(rows)
         # print(md5(pw))
-        if not rows:
-            return ('please add user')
+    #for row in rows:
+    if not rows:
+        return ('please add user')
         # print(useradd)
         # cur.execute("insert into user1 (passwd,username) \
         #                                      values('{0}','{1}')".format(pw,name))
 
-        else:
-            if md5(pw) == row[0]:
-                #print(row[0])
-                return ('login good')
+    else:
+        for row in rows:
+            if pw == row[0]:
+               #print(row[0])
+                session['username'] = request.form['username']
+                #return ('login good')
+                return redirect(url_for('test'))
             else:
+                #print(rows[0])
                 return ('false password')
 
     cur.close()
@@ -63,5 +74,11 @@ def register():
 
     cur.close()
 
+@app.route('/logout')
+def logout():
+    # remove the username from the session if it's there
+    session.pop('username', None)
+    return redirect(url_for('test'))
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 app.run(host='0.0.0.0')
