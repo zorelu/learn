@@ -38,6 +38,7 @@ def login():
     cur = conn.cursor()
     cur.execute("insert into nmap (ip,data)values('{0}','{1}')".format(ip, result))
     print(result)
+    print(com)
     return 'Post %s' % result
 
 # 关闭连接

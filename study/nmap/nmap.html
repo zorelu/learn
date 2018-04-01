@@ -7,9 +7,13 @@
 <body>
 <form action="http://127.0.0.1:5000/login" method="post" id="test">
   <p>ip: <input type="text" name="nampip" />com:
-<select>
-  <option value=" "name="comm">-sS</option>
-</select></p >
+      <!--<input type="text" name="comm" />-->
+<select name="comm">
+    <option value="-sS">-sS</option>
+    <option value="-sT -sV -Pn -v">-sT -sV -Pn -v</option>
+
+</select>
+  </p >
   <input type="submit" form="test" value='运行'></input>
 </form>
 </body>
