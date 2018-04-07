@@ -4,6 +4,7 @@ from flask import Flask, session, redirect, url_for, escape, request
 
 
 # 创建SSH对象
+
 conn = psycopg2.connect(database="test", user="postgres", password="123123zz", host="web.zorelu.win", port="5432")
 print ('Opened database successfully')
 cur = conn.cursor()
