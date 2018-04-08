@@ -65,8 +65,10 @@ def register():
         # #print(rows)
         # print(md5(pw))
     if not rows:
+
         cur.execute("insert into user1 (passwd,username) \
                                                 values('{0}','{1}')".format(md5(pw), name))
+        cur.commit()
         return ('add user now')
     else:
 

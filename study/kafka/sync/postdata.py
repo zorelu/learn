@@ -17,3 +17,4 @@ rows = cur.fetchall()
 for a in rows:
     print (a[0])
     producer.send('test', {'passwd': a[0],'name':a[1]})
+conn.close()

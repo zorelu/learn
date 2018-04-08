@@ -12,7 +12,7 @@ cur = conn.cursor()
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 # 连接服务器
-
+cur = conn.cursor()
 ##都是假的
 # cur.execute("select *  from com")
 # row = cur.fetchall()
@@ -36,14 +36,20 @@ def login():
     stdin, stdout, stderr = ssh.exec_command(com)
 # 获取命令结果
     result = str(stdout.read(),encoding="utf8")
-    cur = conn.cursor()
-    cur.execute("insert into nmap (ip,data)values('{0}','{1}')".format(ip, result))
+    #result=2
+
+    #cur.executemany("insert into nmap (ip,data)values('{0}','{1}')".format(ip, result))
+    cur.execute("INSERT INTO nmap (ip,data)VALUES('{0}','{1}')".format(ip, result))
+    #cur.execute("INSERT INTO Employee "
+     #   "VALUES('Gopher', 'China Beijing', 100, '2017-05-27')")
+    conn.commit()
     print(result)
     print(com)
     return 'Post %s' % result
+    cur.close()
 
 # 关闭连接
-ssh.close()
-cur.close()
+
+#ssh#cur.close()
 
 app.run(host='0.0.0.0')

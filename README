@@ -16,6 +16,12 @@ dingding.py
  falsk 下载文件路由
  dn.py
 
+###数据库操作
+postgres@test LOG:  statement: BEGIN
+statement: INSERT INTO
+postgres@test LOG:  statement: COMMIT
+
+
 
 hashlib.py 
 hashlib demo
