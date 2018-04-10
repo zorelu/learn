@@ -8,7 +8,7 @@ import json
 conn = psycopg2.connect(database="test", user="postgres", password="123123zz", host="web.zorelu.win", port="5432")
 #print ('Opened database successfully')
 cur = conn.cursor()
-producer = KafkaProducer(bootstrap_servers='web.zorelu.win:9092',value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+producer = KafkaProducer(bootstrap_servers='web.zorelu.win:9092',value_serializer=lambda v: json.dumps(v).encode('utf-8'),ack=1)
 
 
 cur.execute("select *  from user1 ")
