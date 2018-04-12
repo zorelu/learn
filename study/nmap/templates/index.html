@@ -1,8 +1,26 @@
+<!--<html>-->
+  <!--<head>-->
+    <!--<title>{{title}} - {{user.nickname}}</title>-->
+  <!--</head>-->
+  <!--<body>-->
+      <!--<h1>Hello, {{user.nickname}}!</h1>-->
+  <!--</body>-->
+
+
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>{{title}} - {{user.nickname}}</title>
-  </head>
-  <body>
-      <h1>Hello, {{user.nickname}}!</h1>
-  </body>
+<head>
+	<title>{{title}} - {{user.nickname}}</title>
+</head>
+<body>
+	<button>click</button>
+</body>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+	$("button").click(function(){
+	    $.post("http://127.0.0.1:5000/login",{username: "{{a}}"},function(data,status){
+	        console.log(data)
+	    });
+	});
+</script>
 </html>

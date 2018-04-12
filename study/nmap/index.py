@@ -9,6 +9,15 @@ def index():
     user = { 'nickname': 'zorelu' } # fake user
     return render_template("index.html",
         title = 'Home',
-        user = user)
+        user = user,
+        a = '12312')
+
+
+@app.route("/login", methods=['post'])
+def login():
+    request.method == 'POST'
+    name = request.form['username']
+    return "%s" % name
+
 
 app.run(host='0.0.0.0')

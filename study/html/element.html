@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+<div id="app">
+<template>
+  <el-tabs v-model="activeName" >
+    <el-tab-pane label="主页" name="first">
+	<br>
+	
+  <el-select v-model="options" placeholder="请选择">
+    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+    </el-option>
+  </el-select>
+  <br>
+	
+<form action="http://127.0.0.1:5000">
+<br>
+ip:<el-input v-model="input" placeholder="请输入内容" style="width: 300px"></el-input>
+ <el-button @clikc="jianrenii()">扫描</el-button>
+ <br>
+<el-input type="textarea" :autosize="{ minRows: 9, maxRows: 4}" placeholder="输出历史" v-model="textarea2" :disabled="true" style="width: 300px">
+ <br>
+
+</form> 
+
+	</el-tab-pane>
+    <el-tab-pane label="历史" name="second">
+	    根据时间搜索<el-date-picker v-model="value6" type="datetimerange" start-placeholder="开始日期" end-placeholder="结束日期" :default-time="['12:00:00']">
+		:<el-input v-model="input" placeholder="请输入内容"></el-input>
+		</el-date-picker>
+		<el-button>搜索</el-button>
+    
+	<el-input type="textarea" :autosize="{ minRows: 9, maxRows: 9}" placeholder="历史记录" v-model="textarea3" :disabled="true">
+</el-input>
+</el-tab-pane>
+    <el-tab-pane label="关于" name="third">23333</el-tab-pane>
+    </el-tab-pane>
+  </el-tabs>
+</template>
+</div>
+</body>
+  <!-- import Vue before Element -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+
+      data: function() {
+        return { 
+		 textarea2: '我是历史',
+		 textarea3: '',
+		 input: '',
+		 value6: '',
+		 activeName: 'first',
+
+       
+		  options: [{
+          value: '选项1',
+          label: '快速扫描'
+        }, {
+          value: '选项2',
+          label: '普通扫描'
+        }
+		],
+		
+
+		visible: false 
+		  
+		  }
+		
+      }
+    })
+  </script>
+</html>
