@@ -33,7 +33,7 @@ def logout():
 
 # set the secret key.  keep this really secret:
 app.secret_key = aa
-
+app.debug = True;
 
 app.run(host='0.0.0.0')
 
