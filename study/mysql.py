@@ -2,7 +2,7 @@ import pymysql.cursors
 
 # Connect to the database
 connection = pymysql.connect(host='tx.zorelu.win',
-                             user='root',
+                             user='root',1
                              password='123123zz',
                              db='test',
                              charset='utf8mb4',

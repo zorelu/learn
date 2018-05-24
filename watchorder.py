@@ -3,7 +3,7 @@ import datetime
 from pymongo import MongoClient
 import json
 import requests
-#import pymssql  
+import pymssql
 
 ###time
 t = time.time()
@@ -16,10 +16,13 @@ moclient = MongoClient('mongodb://zorelu:123123zz@tx.zorelu.win:27017/admin')
 modb = moclient.b2b
 collection=modb.order 
 #####mssql
-#conn=pymssql.connect(host='tx.zorelu.win',user='sa',password='3877276lzY49',database='test') 
+msconn=pymssql.connect(host='tx.zorelu.win',user='sa',password='3877276lzY49',database='test')
+cursor = msconn.cursor()
+
 
 #### run jmster
-data = ''
+num = ''
+msor= ''
 phone = str(13715857400)
 #print (phone)
 ###mongdb gt need 'gt'
@@ -29,20 +32,38 @@ if result.count() == 0:
 else:
 	for data in collection.find({"userName":phone,"creatTime":{'$gt':now}},{"_id":0,"orderNum":1}):
 		#print (data.count())
-		print (data['orderNum'])
+		num = (data['orderNum'])
+
+####
+print(num)
+cursor.execute('SELECT * FROM test WHERE ordernum=%s', 'num')
+rows = cursor.fetchall()
+print (rows)
+if len(rows):
+    for row in rows:
+         print (row)
+
+else:
+    #print ('not found')
+    msor = 'not order num '
+    print(msor)
+
+
+
+
+msconn.close()
 ####print report 
 ###for dingding rebot
 		
-print (data['orderNum'])
+#print (data['orderNum'])
 
 ddmes ={
-           
-            "mongodb订单号" : data['orderNum'], 
-            "mssql订单号" : "", 
-            "对应下单的手机号" : phone, 
-            "测试是否成功" : "", 
-            "mongdb链接是否正常" : "", 
-            "mssql链接是否正常" : "", 
+           "mongodb订单号" : data['orderNum'],
+            "mssql订单号" : "",
+            "对应下单的手机号" : phone,
+            "测试是否成功" : "",
+            "mongdb链接是否正常" : "",
+            "mssql链接是否正常" : msor,
             "预留字段" : ""
         }
 
