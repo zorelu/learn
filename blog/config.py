@@ -1,0 +1,11 @@
+import os
+DEBUG=True
+SECRET_KEY=os.urandom(24)
+
+# HOSTNAME='127.0.0.1'
+# PORT='3306'
+# DETABASE='blog'
+# USERNAEM='ROOT'
+# PASSWORD='123123ZZ'
+DB_URL='mysql+pymysql://zorelu:123123zz@127.0.0.1:3306/blog'
+SQLALCHEMY_DATABASE_URI = DB_URL
