@@ -5,7 +5,7 @@ app = Flask(__name__)
 app.config.from_object(config)
 
 @app.route('/')
-def logout():
+def index():
     # remove the username from the session if it's there
 
     return 'test'
