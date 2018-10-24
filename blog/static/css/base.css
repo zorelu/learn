@@ -7,4 +7,11 @@
   padding-left: 40px;
   margin-right: auto;
   margin-left: auto;
-}s
+}
+.main{
+    background:#fff;
+    width : 400px;
+    margin: 0 auto;
+    overflow:hidden;
+
+}
