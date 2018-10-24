@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,render_template
 import config
 
 app = Flask(__name__)
@@ -8,7 +8,7 @@ app.config.from_object(config)
 def index():
     # remove the username from the session if it's there
 
-    return 'test'
+    return render_template('index.html')
 
 
 app.run(host='127.0.0.1')
