@@ -10,5 +10,10 @@ def index():
 
     return render_template('index.html')
 
+@app.route('/login')
+def login():
+    # remove the username from the session if it's there
+
+    return render_template('login.html')
 
 app.run(host='127.0.0.1')
