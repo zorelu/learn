@@ -1,11 +1,16 @@
+#encoding: utf-8
 import os
-DEBUG=True
-SECRET_KEY=os.urandom(24)
+import pymysql
+HOSTNAME = '127.0.0.1'
+PORT     = '3306'
+DATABASE = 'blog'
+USERNAME = 'zorelu'
+PASSWORD = '123123zz'
+DB_URI = 'mysql+pymysql://{}:{}@{}:{}/{}?charset=utf8'.format(USERNAME,PASSWORD,HOSTNAME,PORT,DATABASE)
+SQLALCHEMY_DATABASE_URI = DB_URI
 
-# HOSTNAME='127.0.0.1'
-# PORT='3306'
-# DETABASE='blog'
-# USERNAEM='ROOT'
-# PASSWORD='123123ZZ'
-DB_URL='mysql+pymysql://zorelu:123123zz@127.0.0.1:3306/blog'
-SQLALCHEMY_DATABASE_URI = DB_URL
+SQLALCHEMY_TRACK_MODIFICATIONS = True
+
+DEBUG = True
+
+SECRET_KEY = os.urandom(24)
