@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,redirect,url_for
 
 
 import config
@@ -31,7 +31,22 @@ def regist():
     if request.method == 'GET':
         return render_template('regist.html')
     else:
-        pass
+        telephone = request.form['telephone']
+        username = request.form['username']
+        password1 = request.form['password1']
+        password2 = request.form['password2']
 
-
+        user = User.query.filter(User.telephone == telephone).first()
+        # print (user)
+        if user:
+                return '手机号码已经被注册'
+        else:
+                if password1 != password2:
+                    return '密码重复'
+                else:
+                    user = User(telephone = telephone,username=username,password=password1)
+                    db.session.add(user)
+                    ###排查排查插入问题
+                    # db.session.commit()
+                    return redirect(url_for('login'))
 app.run(host='127.0.0.1')

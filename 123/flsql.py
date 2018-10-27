@@ -7,7 +7,7 @@ import json
 app = Flask(__name__)
 
 # 指定使用的数据库的链接地址
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://zorelu:123123zz@127.0.0.1:3306/test"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://zorelu:123123zz@127.0.0.1:3306/blog"
 # 关闭追踪数据库的修改
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
