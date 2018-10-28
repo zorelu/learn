@@ -13,18 +13,15 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
 class User(db.Model):
-    table_args = {"useexisting": True}
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True)
-    email = db.Column(db.String(120), unique=True)
+    __tablename__ = 'users'
+    id = db.Column(db.String(100),primary_key=True)
+    username = db.Column(db.String(100),nullable=False)
+    telephone = db.Column(db.String(11),nullable=False)
+    password = db.Column(db.String(100),nullable=False)
 
-    # def __init__(self, username, email):
-    #     self.username = username
-    #     self.email = emaily
-
-    def __repr__(self):
-        return '{},{}'.format(self.username,self.email)
-
-peter = User.query.filter_by(username='admin').all()
-a=peter[0]
-print(a.email)
+telephone = 15914299850
+username = 'zo2relu'
+password1 = 'zor2elu'
+user = User(username=username,telephone = telephone,password=password1)
+db.session.add(user)
+db.session.commit()
