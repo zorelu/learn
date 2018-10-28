@@ -33,6 +33,12 @@ def login():
             else:
                 return '用户名密码错误'
 
+@app.route('/logout/')
+def logout():
+    # session.clear()
+    session.pop('user_id')
+    return redirect(url_for('login'))
+
 
 @app.route('/regist/', methods=['GET', 'POST'])
 def regist():
@@ -60,4 +66,23 @@ def regist():
                     ###排查排查插入问题 注册插入数据报错
                     # db.session.commit()
                     return redirect(url_for('login'))
+
+@app.route('/question/', methods=['GET', 'POST'])
+def question():
+    # remove the username from the session if it's there
+    if request.method == 'GET':
+        return render_template('question.html')
+    else:
+        pass
+
+@app.context_processor
+def my_context_processoer():
+    user_id = session.get('user_id')
+
+    if user_id:
+        user = User.query.filter(User.id == user_id).first()
+        if user:
+            return {'user':user}
+    return {}
+
 app.run(host='127.0.0.1')
