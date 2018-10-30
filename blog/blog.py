@@ -1,6 +1,5 @@
 from flask import Flask,render_template,request,redirect,url_for,session
-
-
+from loginreq import login_req
 import config
 from exts import db
 from models import User
@@ -9,6 +8,9 @@ from models import User
 app = Flask(__name__)
 app.config.from_object(config)
 db.init_app(app)
+
+
+
 
 @app.route('/')
 def index():
@@ -68,6 +70,7 @@ def regist():
                     return redirect(url_for('login'))
 
 @app.route('/question/', methods=['GET', 'POST'])
+@login_req
 def question():
     # remove the username from the session if it's there
     if request.method == 'GET':
