@@ -66,7 +66,7 @@ def regist():
                     db.session.add(user)
 
                     ###排查排查插入问题 注册插入数据报错
-                    # db.session.commit()
+                    db.session.commit()
                     return redirect(url_for('login'))
 
 @app.route('/question/', methods=['GET', 'POST'])
