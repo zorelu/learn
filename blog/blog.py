@@ -2,7 +2,7 @@ from flask import Flask,render_template,request,redirect,url_for,session
 from loginreq import login_req
 import config
 from exts import db
-from models import User
+from models import User,Question
 
 
 app = Flask(__name__)
@@ -76,7 +76,16 @@ def question():
     if request.method == 'GET':
         return render_template('question.html')
     else:
-        pass
+       title  = request.form['title']
+       context = request.form['context']
+       questions = Question(title=title,context=context)
+       user_id = session.get('user_id')
+       user = User.query.filter(User.id == user_id).first()
+       # print(user)
+       question.author = user
+       db.session.add(questions)
+       db.session.commit()
+       return redirect(url_for('index'))
 
 @app.context_processor
 def my_context_processoer():
