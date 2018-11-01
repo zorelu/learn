@@ -5,6 +5,7 @@
 {% endblock %}
 {%block main %}
     <ul class="question-ul">
+        {% for question in questions %}
                         <div class="side-question">
             <img class="side-question-avatar" src="{{url_for('static',filename='images/favicon.ico')}}" alt="">
                 </div>
@@ -13,16 +14,14 @@
 
 
             <div class="question-main">
-                <p class="question-title"> question-group </p>
-                <p class="question-context"> question-contextquestion-contex
-                    tquestion-contextquestion-contextquestion-contextquestion-contextq
-                    uestion-contextquestion-contextquestion-contextquestion-contextquestion-context
-                </p>
+                <p class="question-title"> {{ question.title }} </p>
+                <p class="question-context"> {{ question.content }}</p>
                 <p class="question-detail">
                         <span class="question-author">zorelu</span>
-                        <span class="question-time">2018-10-09 10:10:10</span>
+                        <span class="question-time">{{ question.create_time }}</span>
                     </p>
             </div>
         </li>
+          {% endfor %}
     </ul>
 {% endblock %}
