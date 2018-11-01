@@ -7,4 +7,58 @@
   padding-left: 40px;
   margin-right: auto;
   margin-left: auto;
-}s
+}
+.question-context{
+    margin-top: 5px;
+    font-size:12px;
+}
+.question-detail{
+    text-align: right;
+    margin-top: 10px;
+}
+.question-detail .question-author{
+    margin-right:10px;
+}
+.question-ul li{
+    padding: 10px;
+    overflow: hidden;
+    border-bottom:1px solid #eee;
+    padding-left :0;
+}
+.side-question{
+    float: left;
+    height:100%;
+    width: 38px;
+}
+.side-question-avatar{
+    width: 38px;
+    height:38px;
+    border-radius: 3px;
+}
+.question-main{
+    float: left;
+    width: 660px;
+    margin-left:10px;
+    overflow: hidden;
+}
+.question-title a{
+    color: #259;
+    font-size:14px;
+    font-weight: 900;
+}
+.question-author{
+    font-size: 12px;
+    margin-top: 5px;
+}
+.question-context{
+    margin-top: 5px;
+    font-size:12px;
+}
+.question-detail{
+    text-align: right;
+    margin-top: 10px;
+     width : 660px;
+}
+.question-detail .question-author{
+    margin-right:10px;
+}

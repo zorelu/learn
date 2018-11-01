@@ -9,9 +9,8 @@
   margin-left: auto;
 }
 .main{
-    background:#fff;
-    width : 500px;
+    background: #fff;
+    width: 730px;
+    overflow: hidden;
     margin: 0 auto;
-    overflow:hidden;
-
 }
