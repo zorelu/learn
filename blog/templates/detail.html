@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/detail.css') }}">
+{% endblock %}
+
+{% block title %}详情{% endblock %}
+
+{% block main %}
+    <h3 class="h3">{{question.title}}</h3>
+    <p class="question-info">
+        <span>作者：zorelu</span>
+        <span>时间：{{question.create_time}}</span>
+    </p>
+    <hr>
+    <p class="question-content">{{ question.context }}</p>
+    <hr>
+
+
+{% endblock %}

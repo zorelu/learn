@@ -21,6 +21,14 @@ def index():
     }
     return render_template('index.html',**context)
 
+@app.route('/detail/<question_id>')
+def detail(question_id):
+    # print(question_id)
+    questions_model = Question.query.filter(Question.id == question_id ).first()
+    # print(question_id)
+    return render_template('detail.html',question=questions_model)
+
+
 @app.route('/regist/', methods=['GET', 'POST'])
 def regist():
     # remove the username from the session if it's there

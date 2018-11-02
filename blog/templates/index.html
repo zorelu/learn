@@ -14,7 +14,8 @@
 
 
             <div class="question-main">
-                <p class="question-title"> {{ question.title }} </p>
+                <!--利用question_id反转链接路由到/detail/<question_id> 并用uestions_model = Question.query.filter(Question.id == question_id ).first() 查到一条数据-->
+                <p class="question-title"> <a href="{{ url_for('detail',question_id=question.id) }}">{{ question.title }} </a></p>
                 <p class="question-context"> {{ question.content }}</p>
                 <p class="question-detail">
                         <span class="question-author">zorelu</span>
