@@ -7,6 +7,7 @@ class User(db.Model):
     username = db.Column(db.String(100),nullable=False)
     telephone = db.Column(db.String(11),nullable=False)
     password = db.Column(db.String(100),nullable=False)
+    img_url = db.Column(db.String(100),nullable=False)
 
 
 class Question(db.Model):

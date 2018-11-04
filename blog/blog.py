@@ -125,18 +125,19 @@ def my_context_processoer():
     # #     return redirect(url_for('index'))
 
 
-@app.route('/delete/<ida>',methods=['GET', 'POST'])
-def delete(ida):
+@app.route('/delete/<delete_id>',methods=['GET', 'POST'])
+@login_req
+def delete(delete_id):
 
         if request.method == 'GET':
             return render_template('index.html')
         else:
             # print('post')
-            me = Question.query.filter(Question.id == ida).first()
-            db.session.delete(me)
+            dele = Question.query.filter(Question.id == delete_id).first()
+            db.session.delete(dele)
             db.session.commit()
             return redirect(url_for('index'))
-            # ida = Question.query.filter(Question.id == ida).first()
+            # id23 = Question.query.filter(Question.id == ida).first()
 
     # else:
     #
@@ -145,5 +146,20 @@ def delete(ida):
     #     a.hid='hidden'
     #     db.session.commit()
     #     return redirect(url_for('index'))
+
+@app.route('/center/<users_id>')
+
+def center(users_id):
+    user_id = session.get('user_id')
+    usertext = {
+        'questions': Question.query.filter(Question.author_id == user_id ).all()
+    }
+    # user_model = Question.query.filter(Question.author_id == user_id ).first()
+    # print(question_id)
+    return render_template('center.html',**usertext)
+
+
+
+
 
 app.run(host='127.0.0.1')

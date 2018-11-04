@@ -47,3 +47,11 @@
 .h3{
     text-align:center;
 }
+.button{
+    width : 200px;
+    margin: 0 auto;
+    float: right;
+}
+.img{
+   margin: 0 auto;
+}
