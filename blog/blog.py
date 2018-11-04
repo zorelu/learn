@@ -125,6 +125,25 @@ def my_context_processoer():
     # #     return redirect(url_for('index'))
 
 
+@app.route('/delete/<ida>',methods=['GET', 'POST'])
+def delete(ida):
 
+        if request.method == 'GET':
+            return render_template('index.html')
+        else:
+            # print('post')
+            me = Question.query.filter(Question.id == ida).first()
+            db.session.delete(me)
+            db.session.commit()
+            return redirect(url_for('index'))
+            # ida = Question.query.filter(Question.id == ida).first()
+
+    # else:
+    #
+    #     ##update
+    #     a = Question.query.filter(Question.id == a).first()
+    #     a.hid='hidden'
+    #     db.session.commit()
+    #     return redirect(url_for('index'))
 
 app.run(host='127.0.0.1')

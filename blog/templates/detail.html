@@ -15,6 +15,8 @@
     <hr>
     <p class="question-content">{{ question.context }}</p>
     <hr>
-
+                            <form action="{{ url_for('delete',ida=question.id) }}" method="post" >
+                            <button type="submit" class="btn btn-primary btn-block">delete</button>
+                            </form>
 
 {% endblock %}
