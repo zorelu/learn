@@ -110,4 +110,21 @@ def my_context_processoer():
             return {'user':user}
     return {}
 
+
+    # @app.route('/hidw/<a>',methods=['GET', 'POST']))
+    # def hid():
+    #     return (index)
+    # # if request.method == 'GET':
+    # #     return render_template('index.html')
+    # # else:
+    # #
+    # #     ##update
+    # #     a = Question.query.filter(Question.id == a).first()
+    # #     a.hid='hidden'
+    # #     db.session.commit()
+    # #     return redirect(url_for('index'))
+
+
+
+
 app.run(host='127.0.0.1')

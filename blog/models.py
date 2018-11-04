@@ -17,3 +17,7 @@ class Question(db.Model):
     create_time = db.Column(db.DateTime,default=datetime.now())
     author_id = db.Column(db.Integer,db.ForeignKey('users.id'))
     author = db.relationship('User',backref='questions')
+
+
+    # # 隐藏按钮未完成功能
+    # hid = db.Column(db.Text, nullable=False)

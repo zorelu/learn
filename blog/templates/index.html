@@ -10,16 +10,18 @@
             <img class="side-question-avatar" src="{{url_for('static',filename='images/favicon.ico')}}" alt="">
                 </div>
         <li>
-
-
-
             <div class="question-main">
                 <!--利用question_id反转链接路由到/detail/<question_id> 并用uestions_model = Question.query.filter(Question.id == question_id ).first() 查到一条数据-->
                 <p class="question-title"> <a href="{{ url_for('detail',question_id=question.id) }}">{{ question.title }} </a></p>
-                <p class="question-context"> {{ question.content }}</p>
-                <p class="question-detail">
+                <!--<p  {{ question.hid }} class="question-context"> {{ question.context }}</p>-->
+                <p  class="question-context"> {{ question.context }}</p>
+                <p  class="question-detail">
                         <span class="question-author">zorelu</span>
                         <span class="question-time">{{ question.create_time }}</span>
+                	{#<!--隐藏按钮未完成功能在jinj2中  表示注释，其中内容不被模板引擎转义。-->
+                            <!--<form action="{{ url_for('hid',a=question.id) }}" method="post" >-->
+                            <!--<button type="submit" class="btn btn-primary btn-block">hidden</button>-->
+                            <!--</form>-->#}
                     </p>
             </div>
         </li>
