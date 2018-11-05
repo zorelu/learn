@@ -39,7 +39,7 @@ def regist():
         username = request.form['username']
         password1 = request.form['password1']
         password2 = request.form['password2']
-
+        img_url =  username + '.jpg'
         user = User.query.filter(User.telephone == telephone).first()
         # print (user)
         if user:
@@ -49,7 +49,7 @@ def regist():
                     return '密码重复'
                 else:
 
-                    user = User(telephone = telephone,username=username,password=password1)
+                    user = User(telephone = telephone,username=username,password=password1,img_url = img_url)
                     db.session.add(user)
 
                     ###排查排查插入问题 注册插入数据报错(id must Intgeter)

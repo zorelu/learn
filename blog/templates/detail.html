@@ -16,10 +16,13 @@
     <hr>
     <p class="question-content">{{ question.context }}</p>
     <hr>
+    {% if user %}
     <div class="button">
         <form action="{{ url_for('delete',delete_id=question.id) }}" method="post" >
             <button type="submit" class="btn btn-primary btn-block">删除文章</button>
         </form>
      </div>
+     {% else %}
+     {% endif %}
 
 {% endblock %}

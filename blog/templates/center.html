@@ -8,12 +8,13 @@
 
 {% block main %}
     <h3 class="h3">个人中心</h3>
-    <h4>上传头像</h4>
-    <input id="input-1a" type="file" class="file" data-show-preview="false">
+    <!--<h4>上传头像</h4>-->
+    <!--<input id="input-1a" type="file" class="file" data-show-preview="false">-->
+        <span>我的文章:</span>
  {% for usertext in questions %}
     <p class="question-info">
 
-        <span>我的文章:<p class="question-title"> <a href="{{ url_for('detail',question_id=usertext.id) }}">{{ usertext.title }} </a></p></span>
+        <p class="question-title"> <a href="{{ url_for('detail',question_id=usertext.id) }}">{{ usertext.title }} </a></p>
         <span>{{ usertext.comtext }}</span>
 
     </p>
