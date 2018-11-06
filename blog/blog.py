@@ -4,32 +4,22 @@ import config
 from exts import db
 from models import User,Question
 
-
 app = Flask(__name__)
 app.config.from_object(config)
 db.init_app(app)
 
 
-
-
 @app.route('/')
+#首页路由
 def index():
-    # remove the username from the session if it's
     ###按时间排序 -号
     context = {
         'questions' : Question.query.order_by('-create_time').all()
     }
     return render_template('index.html',**context)
 
-@app.route('/detail/<question_id>')
-def detail(question_id):
-    # print(question_id)
-    questions_model = Question.query.filter(Question.id == question_id ).first()
-    # print(question_id)
-    return render_template('detail.html',question=questions_model)
-
-
 @app.route('/regist/', methods=['GET', 'POST'])
+#注册路由
 def regist():
     # remove the username from the session if it's there
     if request.method == 'GET':
@@ -40,34 +30,33 @@ def regist():
         password1 = request.form['password1']
         password2 = request.form['password2']
         img_url =  username + '.jpg'
+        #判断手机号是否存在重复
         user = User.query.filter(User.telephone == telephone).first()
-        # print (user)
         if user:
                 return '手机号码已经被注册'
         else:
                 if password1 != password2:
-                    return '密码重复'
+                    return '两次密码不一致'
                 else:
-
                     user = User(telephone = telephone,username=username,password=password1,img_url = img_url)
                     db.session.add(user)
-
                     ###排查排查插入问题 注册插入数据报错(id must Intgeter)
                     db.session.commit()
                     return redirect(url_for('login'))
 
-
 @app.route('/login/',methods=['GET','POST'])
+#登陆路由
 def login():
     # remove the username from the session if it's there
         if request.method == 'GET':
             return render_template('login.html')
         else:
-
             telephone = request.form['telephone']
             password = request.form['password']
+            #判断用户名密码是否一致
             user = User.query.filter(User.telephone == telephone,User.password == password).first()
             if user:
+                #存放session的用户id
                 session['user_id'] = user.id
                 session.permanet = True
                 return redirect(url_for('index'))
@@ -75,15 +64,17 @@ def login():
                 return '用户名密码错误'
 
 @app.route('/logout/')
+#注销路由
 def logout():
     # session.clear()
     session.pop('user_id')
     return redirect(url_for('login'))
 
 
-
 @app.route('/question/', methods=['GET', 'POST'])
+# 判断用户是否登陆，否则返回登陆页面的路由装饰器
 @login_req
+#问题文章路由
 def question():
     # remove the username from the session if it's there
     if request.method == 'GET':
@@ -93,63 +84,22 @@ def question():
        context = request.form['context']
        user_id = session.get('user_id')
        questions = Question(title=title,context=context,author_id= user_id)
-
-       # user = User.query.filter(User.id == user_id).first()
-       # print(user)
-       # question.author = User.query.filter(User.id == user_id).first()
        db.session.add(questions)
        db.session.commit()
        return redirect(url_for('index'))
 
-@app.context_processor
-def my_context_processoer():
-    user_id = session.get('user_id')
-
-    if user_id:
-        user = User.query.filter(User.id == user_id).first()
-        if user:
-            return {'user':user}
-    return {}
-
-
-    # @app.route('/hidw/<a>',methods=['GET', 'POST']))
-    # def hid():
-    #     return (index)
-    # # if request.method == 'GET':
-    # #     return render_template('index.html')
-    # # else:
-    # #
-    # #     ##update
-    # #     a = Question.query.filter(Question.id == a).first()
-    # #     a.hid='hidden'
-    # #     db.session.commit()
-    # #     return redirect(url_for('index'))
-
-
-@app.route('/delete/<delete_id>',methods=['GET', 'POST'])
-@login_req
-def delete(delete_id):
-        if request.method == 'GET':
-            return render_template('index.html')
-        else:
-            user_id = session.get('user_id')
-            print(user_id)
-            userid = Question.query.filter(Question.author_id == user_id).first()
-            print(userid)
-            if userid:
-            # print('post')
-                dele = Question.query.filter(Question.id == delete_id).first()
-                db.session.delete(dele)
-                db.session.commit()
-                return redirect(url_for('index'))
-            else:
-                return  '没有权限删除'
-            # id23 = Question.query.filter(Question.id == ida).first()
+@app.route('/detail/<question_id>')
+#文章详情路由
+def detail(question_id):
+    # print(question_id)
+    questions_model = Question.query.filter(Question.id == question_id ).first()
+    # print(question_id)
+    return render_template('detail.html',question=questions_model)
 
 
 
 @app.route('/center/<users_id>')
-
+#用户中心路由。
 def center(users_id):
     user_id = session.get('user_id')
     usertext = {
@@ -159,8 +109,47 @@ def center(users_id):
     # print(question_id)
     return render_template('center.html',**usertext)
 
+@app.route('/delete/<delete_id>',methods=['GET', 'POST'])
+# 判断用户是否登陆，否则返回登陆页面的路由装饰器
+@login_req
+#删除用户文章的路由
+def delete(delete_id):
+    if request.method == 'GET':
+            return render_template('index.html')
+    else:
+        #判断用户id是否一致，才去删除
+        user_id = session.get('user_id')
+        userid = Question.query.filter(Question.author_id == user_id).first()
+        if userid :
+            dele = Question.query.filter(Question.id == delete_id).first()
+            db.session.delete(dele)
+            db.session.commit()
+            return redirect(url_for('index'))
+        else:
+            return  '没有权限删除'
 
 
+@app.context_processor
+##装修{% if user %}
+def my_context_processoer():
+    user_id = session.get('user_id')
+    if user_id:
+        user = User.query.filter(User.id == user_id).first()
+        if user:
+            return {'user':user}
+    return {}
+##监听端口
+app.run(host='0.0.0.0')
 
-
-app.run(host='127.0.0.1')
+# @app.route('/hidw/<a>',methods=['GET', 'POST']))
+# def hid():
+#     return (index)
+# # if request.method == 'GET':
+# #     return render_template('index.html')
+# # else:
+# #
+# #     ##update
+# #     a = Question.query.filter(Question.id == a).first()
+# #     a.hid='hidden'
+# #     db.session.commit()
+# #     return redirect(url_for('index'))

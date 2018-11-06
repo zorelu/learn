@@ -2,6 +2,7 @@ from exts import db
 from datetime import datetime
 from sqlalchemy.orm import relationship, backref
 
+#数据库模型
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer,primary_key=True)
@@ -9,7 +10,6 @@ class User(db.Model):
     telephone = db.Column(db.String(11),nullable=False)
     password = db.Column(db.String(100),nullable=False)
     img_url = db.Column(db.String(100),nullable=False)
-
 
 class Question(db.Model):
     __tablename__ = 'questions'
