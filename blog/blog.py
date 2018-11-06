@@ -129,24 +129,24 @@ def my_context_processoer():
 @app.route('/delete/<delete_id>',methods=['GET', 'POST'])
 @login_req
 def delete(delete_id):
-
         if request.method == 'GET':
             return render_template('index.html')
         else:
+            user_id = session.get('user_id')
+            print(user_id)
+            userid = Question.query.filter(Question.author_id == user_id).first()
+            print(userid)
+            if userid:
             # print('post')
-            dele = Question.query.filter(Question.id == delete_id).first()
-            db.session.delete(dele)
-            db.session.commit()
-            return redirect(url_for('index'))
+                dele = Question.query.filter(Question.id == delete_id).first()
+                db.session.delete(dele)
+                db.session.commit()
+                return redirect(url_for('index'))
+            else:
+                return  '没有权限删除'
             # id23 = Question.query.filter(Question.id == ida).first()
 
-    # else:
-    #
-    #     ##update
-    #     a = Question.query.filter(Question.id == a).first()
-    #     a.hid='hidden'
-    #     db.session.commit()
-    #     return redirect(url_for('index'))
+
 
 @app.route('/center/<users_id>')
 
