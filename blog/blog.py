@@ -91,11 +91,12 @@ def question():
     else:
        title  = request.form['title']
        context = request.form['context']
-       questions = Question(title=title,context=context)
        user_id = session.get('user_id')
-       user = User.query.filter(User.id == user_id).first()
+       questions = Question(title=title,context=context,author_id= user_id)
+
+       # user = User.query.filter(User.id == user_id).first()
        # print(user)
-       question.author = user
+       # question.author = User.query.filter(User.id == user_id).first()
        db.session.add(questions)
        db.session.commit()
        return redirect(url_for('index'))
