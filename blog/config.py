@@ -11,4 +11,5 @@ DB_URI = 'mysql+pymysql://{}:{}@{}:{}/{}?charset=utf8'.format(USERNAME,PASSWORD,
 SQLALCHEMY_DATABASE_URI = DB_URI
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 # DEBUG = True
-# SECRET_KEY = os.urandom(24)
+##不设置的话会报RuntimeError: The session is unavailable because no secret key was set.  Set the secret_key on the application to something unique and secret.
+SECRET_KEY = os.urandom(24)

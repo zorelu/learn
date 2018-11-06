@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <link rel="shortcut icon" href="{{url_for('static',filename='images/favicon.ico')}}" type="image/x-icon"/>
-
     <title>{%block title %}{% endblock %}-test</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--引入css文件-->
     <link rel="stylesheet" href="{{url_for('static',filename='css/base.css')}}">
     <script>https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -26,15 +25,12 @@
       <a class="navbar-brand" href="{{url_for('index')}}">
         <img class="logo" src="{{url_for('static',filename='images/logo.png')}}" alt="">
       </a>
-
     </div>
-
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="{{url_for('index')}}">首页</a></li>
         <li><a href="{{url_for('question')}}">发布问答</a></li>
-
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">
@@ -43,6 +39,7 @@
         <button type="submit" class="btn btn-default">查找</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
+          <!--判断用户是否有登陆，有才把用户名赋值-->
                     {% if user %}
                         {#<li><a href="{{ url_for('center',users_id=user.id) }}">{{ user.username }}</a></li>#}
                          <li><a href="{{ url_for('center',users_id=user.id) }}">

@@ -1,11 +1,8 @@
 {% extends 'base.html' %}
-
 {% block head %}
     <link rel="stylesheet" href="{{ url_for('static',filename='css/detail.css') }}">
 {% endblock %}
-
 {% block title %}详情{% endblock %}
-
 {% block main %}
     <h3 class="h3">{{question.title}}</h3>
 
@@ -24,5 +21,4 @@
      </div>
      {% else %}
      {% endif %}
-
 {% endblock %}
