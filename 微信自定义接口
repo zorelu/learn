@@ -1,0 +1,34 @@
+json body数据
+
+{
+    "button": [
+        {
+            "type": "click", 
+            "name": "今日2歌曲", 
+            "key": "V1001_TODAY_MUSIC"
+        }, 
+        {
+            "type": "click", 
+            "name": "歌手简介", 
+            "key": "V1001_TODAY_SINGER"
+        }, 
+        {
+            "name": "菜单", 
+            "sub_button": [
+                {
+                    "type": "view", 
+                    "name": "搜索", 
+                    "url": "http://www.soso.com/"
+                }, 
+                {
+                    "type": "view", 
+                    "name": "视2频", 
+                    "url": "http://v.qq.com/"
+                }, 
+                {
+                    "type": "click", 
+                    "name": "赞4465465一下我们", 
+                    "key": "V1001_GOOD"
+                }
+            ]
+        }
