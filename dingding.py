@@ -4,9 +4,10 @@
 ###接口地址
 url=https://oapi.dingtalk.com/robot/send?access_token=e502a9f5b25cb8061ae0ad89e923b17f7e7c980680db31a2e6cbba8ac64ebe09
 b=$(date +%s)
-a=$(echo "$b,当前时间")
+
+a='当前时间"
 echo $data
-curl -H "Content-type: application/json" -X POST -d '{"msgtype":"text","text":{"content":"'$a'"},"at":{"atMobiles":["15914299850","189xxxx8325"]}}' $url
+curl -H "Content-type: application/json" -X POST -d '{"msgtype":"text","text":{"content":"'$a' '$b'"},"at":{"atMobiles":["15914299850","189xxxx8325"]}}' $url
 ####输出信息为“当前时间戳加@15914299850”
 ###使用python
 ###需要安装requests demjson包
