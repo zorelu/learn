@@ -22,7 +22,7 @@ Kivy==1.10.0
 Kivy-Garden==0.1.4
 MarkupSafe==1.0
 numpy==1.14.2
-paramiko==2.4.1
+paramiko==2.4.2
 Pillow==2.7.0
 psycopg2==2.7.4
 pyasn1==0.4.2
