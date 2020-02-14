@@ -16,15 +16,19 @@ dingding.py
  falsk 下载文件路由
  dn.py
 
-###copyimge
-从数据库读取图片名称并复制图片备份到对应文件夹
-
 
 ###数据库操作
 postgres@test LOG:  statement: BEGIN
 statement: INSERT INTO
 postgres@test LOG:  statement: COMMIT
 
+#### 
+2020/2/14 更新 #####
+######shopupload
+叮咚商城批量上传工具
+
+###copyimge
+从数据库读取图片名称并复制图片备份到对应文件夹
 
 ####比特币交易量推送到钉钉
 btcwatch.py
