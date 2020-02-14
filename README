@@ -25,3 +25,8 @@ postgres@test LOG:  statement: COMMIT
 
 hashlib.py 
 hashlib demo
+
+####比特币交易量推送到钉钉
+btcwatch.py
+testbtcfor.py #测试逻辑用例
+
