@@ -34,3 +34,6 @@ postgres@test LOG:  statement: COMMIT
 btcwatch.py
 testbtcfor.py #测试逻辑用例
 
+2020/5/18
+###更新pyqthis软件测试
+4个文件。2界面2个逻辑
